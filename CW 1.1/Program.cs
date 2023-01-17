@@ -12,29 +12,47 @@ namespace CW_1._1
 {
     class Program
     {
-        private int bob;
-        public void setBob(int a)
+        Random rnd = new Random();
+
+        private int randomNumber;
+        private string userNumber;
+
+        public int inputUserNumber()
         {
-            bob = a;
+            userNumber = Console.ReadLine();
+            int a = Convert.ToInt32(userNumber);
+
+            return a;
         }
 
-        public int getBob()
+        public void findRandomNumber()
         {
-            return bob;
+                randomNumber = rnd.Next(0,100);
         }
+
+        public int getRandomNumber()
+        {
+            return randomNumber;
+        }
+
+        public string getUserNumber()
+        {
+            return userNumber;
+        }
+
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello world!");
-            Console.ReadKey();
-            Console.WriteLine("Setting Bob: ");
-            Console.ReadKey();
             Program p = new Program();
-            p.setBob(19);
-            Console.WriteLine("Setting Bob to 19!");
-             
-            Console.WriteLine("Bob is: " + p.getBob());
+
+            Console.WriteLine("Input a number from 1-100: ");
+            p.inputUserNumber();
+
+            Console.WriteLine("User number is " + p.getUserNumber());
             Console.ReadKey();
-            Console.WriteLine("Bob says Hello World!");
+
+            p.findRandomNumber();
+            Console.WriteLine("The random number is: " + p.getRandomNumber());
+            Console.ReadKey();
         }
     }
 }
