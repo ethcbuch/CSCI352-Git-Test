@@ -31,9 +31,10 @@ namespace CW_1._1
             Program p = new Program();
             p.setBob(19);
             Console.WriteLine("Setting Bob to 19!");
-
-            Console.WriteLine("BOb is: " + p.getBob());
+             
+            Console.WriteLine("Bob is: " + p.getBob());
             Console.ReadKey();
+            Console.WriteLine("Bob says Hello World!");
         }
     }
 }
