@@ -18,27 +18,39 @@ namespace CW_1._1
         private string userNumberToConvert;
         private int userNumber;
         private int attemptsCount;
+        private string lowerBoundToConvert;
+        private string upperBoundToConvert;
+        private int lowerBound;
+        private int upperBound;
 
-        public int inputUserNumber()
+        public void inputUserBounds()
+        {
+            Console.WriteLine("Imput a lower bound to guess between: ");
+            lowerBoundToConvert = Console.ReadLine();
+            lowerBound = Convert.ToInt32(lowerBoundToConvert);
+
+            Console.WriteLine("Imput a upper bound to guess between: ");
+            upperBoundToConvert = Console.ReadLine();
+            upperBound = Convert.ToInt32(upperBoundToConvert);
+        }
+        public void inputUserNumber()
         {
             Console.WriteLine("Guess a Number: ");
             userNumberToConvert = Console.ReadLine();
             userNumber = Convert.ToInt32(userNumberToConvert);
 
-            while (getUserNumber() > 100 || getUserNumber() < 0)
+            while (getUserNumber() > upperBound || getUserNumber() < lowerBound)
             {
-                Console.WriteLine("Please choose a number between 0 and 100!");
+                Console.WriteLine("Please choose a number between " + getLowerBound() +  " and " + getUpperBound() + "!");
                 Console.WriteLine("Guess a Number: ");
                 userNumberToConvert = Console.ReadLine();
                 userNumber = Convert.ToInt32(userNumberToConvert);
             }
-
-            return userNumber;
         }
 
         public void findRandomNumber()
         {
-            randomNumber = rnd.Next(0, 100);
+            randomNumber = rnd.Next(lowerBound, upperBound);
         }
 
         public int getRandomNumber()
@@ -49,6 +61,15 @@ namespace CW_1._1
         public int getUserNumber()
         {
             return userNumber;
+        }
+        public int getLowerBound()
+        {
+            return lowerBound;
+        }
+
+        public int getUpperBound()
+        {
+            return upperBound;
         }
 
         public void attemptsCounter()
@@ -64,8 +85,10 @@ namespace CW_1._1
         static void Main(string[] args)
         {
             Program p = new Program();
+            Console.WriteLine("Enter a lower and upper bound to guess a number between!");
+            p.inputUserBounds();
 
-            Console.WriteLine("I am thinking of a number between 0-100. Guess the correct number to escape this program!");
+            Console.WriteLine("I am thinking of a number between " + p.getLowerBound() +  "-" + p.getUpperBound() + " Guess the correct number to escape this program!");
             p.inputUserNumber();
             p.findRandomNumber();
 
